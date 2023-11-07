@@ -17,7 +17,7 @@ const Square = ({ move, onClick, turn, disable = false }) => {
         {/* this will only prompt the move of the player inside of the square */}
         {move && (move === "x" ? <X size={60} /> : <Circle size={60} />)}
         {/* this will just give an hover effect to know which turn is it x or o */}
-        {!move && (
+        {!move && !disable && (
           <div className="hidden group-hover:block transition duration-500">
             {turn ? <X size={60} /> : <Circle size={60} />}
           </div>
