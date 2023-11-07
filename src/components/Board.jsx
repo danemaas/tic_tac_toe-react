@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { checkWinner } from "../utils/checkWinner";
 import Square from "./Square";
-import { toast } from "sonner";
 
 //board component with a props of reset and setIsWinner from parent component App
 const Board = ({ reset, setIsWinner }) => {
