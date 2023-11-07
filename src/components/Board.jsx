@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { checkWinner } from "../utils/checkWinner";
 import Square from "./Square";
+import { toast } from "sonner";
 
 //board component with a props of reset and setIsWinner from parent component App
 const Board = ({ reset, setIsWinner }) => {
@@ -24,6 +25,9 @@ const Board = ({ reset, setIsWinner }) => {
     setTurn(initialTurn);
   }, [reset]);
 
+  //winner variable will receive the value return by function checkWinner
+  const winner = checkWinner(board);
+
   //this function will handle the player moves when player clicked a square
   //function will accept 2 params which is row and col for the position of
   //the clicked square
@@ -41,11 +45,10 @@ const Board = ({ reset, setIsWinner }) => {
       //newBoard value will be received in setBoard to updated the board value
       setBoard(newBoard);
       setTurn(!turn); //change the turn for the next player's move
+    } else if (board[row][col] !== "" && !winner) {
+      alert("square already taken");
     }
   };
-
-  //winner variable will receive the value return by function checkWinner
-  const winner = checkWinner(board);
 
   //if there is a winner set the isWinner value by the winner value
   if (winner) {
@@ -54,6 +57,7 @@ const Board = ({ reset, setIsWinner }) => {
 
   return (
     <div
+      disable={winner}
       className="w-[500px] h-[500px] bg-cyan-500 rounded-md
       border-2 border-slate-500 overflow-hidden grid grid-rows-3
       cursor-pointer"
