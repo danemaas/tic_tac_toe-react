@@ -27,11 +27,16 @@ const App = () => {
           />
         </div>
         {/* this will only appear if there is already a winner */}
-        {isWinner && (
+        {isWinner && isWinner !== "draw" && (
           <div className="text-3xl font-medium flex items-center gap-3 py-5">
             <PartyPopper size={35} className="text-green-500" />
             <span>Winner: {isWinner.toUpperCase()}</span>
             <PartyPopper size={35} className="-scale-x-100 text-green-500" />
+          </div>
+        )}
+        {isWinner === "draw" && (
+          <div className="text-3xl font-medium flex items-center gap-3 py-5">
+            <span>The game is a draw!</span>
           </div>
         )}
         <Board reset={reset} setIsWinner={setIsWinner} />

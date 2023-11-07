@@ -67,6 +67,11 @@ export function checkWinner(board) {
     }
   }
 
+  //if no winner is found, check for a draw
+  if (board.flat().every((value) => value !== "")) {
+    return "draw";
+  }
+
   //if no winning combinations were met return null
   return null;
 }
