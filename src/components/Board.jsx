@@ -64,6 +64,7 @@ const Board = ({ reset, setIsWinner }) => {
         {[...Array(3)].map((square, index) => (
           <Square
             disable={winner}
+            turn={turn}
             key={index}
             move={board[0][index]}
             onClick={() => handleSquareClick(0, index)}
@@ -74,6 +75,7 @@ const Board = ({ reset, setIsWinner }) => {
         {[...Array(3)].map((square, index) => (
           <Square
             disable={winner}
+            turn={turn}
             key={index}
             move={board[1][index]}
             onClick={() => handleSquareClick(1, index)}
@@ -84,6 +86,7 @@ const Board = ({ reset, setIsWinner }) => {
         {[...Array(3)].map((square, index) => (
           <Square
             disable={winner}
+            turn={turn}
             key={index}
             move={board[2][index]}
             onClick={() => handleSquareClick(2, index)}
